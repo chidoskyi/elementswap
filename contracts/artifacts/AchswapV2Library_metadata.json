@@ -1,0 +1,40 @@
+{
+	"compiler": {
+		"version": "0.6.6+commit.6c089d02"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AchswapV2Router.sol": "AchswapV2Library"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 2000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AchswapV2Router.sol": {
+			"keccak256": "0x16b479ca2205ae7d931ae938c2b1eccb020dc0224309f295ee5a4908a7b9b62f",
+			"urls": [
+				"bzz-raw://6ce510d6749ff96323d747dde96886fa21940e19a1d805c101b2740cbd02aa32",
+				"dweb:/ipfs/QmZfiMBBiEBYnHgmhxDJQ9eX54W1DuyFp1oYwURmaWW8g5"
+			]
+		}
+	},
+	"version": 1
+}
