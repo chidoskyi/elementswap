@@ -28,6 +28,8 @@ export function RemoveLiquidityPage() {
   const [settingsOpen, setSettings] = useState(false);
   const [slippageBps, setSlippage]  = useState(50);
   const [deadlineMin, setDeadline]  = useState(20);
+  const [quoteRefreshSec,   setQuoteRefresh]       = useState(30);
+  const [recipientAddress,  setRecipientAddress]   = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   let contracts: ReturnType<typeof getContracts> | null = null;
@@ -92,6 +94,7 @@ export function RemoveLiquidityPage() {
         functionName: "removeLiquidity",
         args:         [token0.address, token1.address, lpAmt, min0, min1, address, dl],
       });
+      
 
       toast.success(
         <span>
@@ -130,8 +133,14 @@ export function RemoveLiquidityPage() {
             </div>
             <SwapSettings
               open={settingsOpen} onToggle={() => setSettings(v => !v)}
-              slippageBps={slippageBps} setSlippage={setSlippage}
-              deadlineMin={deadlineMin} setDeadline={setDeadline}
+              slippageBps={slippageBps} 
+              setSlippage={setSlippage} 
+              deadlineMin={deadlineMin} 
+              setDeadline={setDeadline} 
+              setQuoteRefresh={setQuoteRefresh} 
+              quoteRefreshSec={quoteRefreshSec} 
+              recipientAddress={recipientAddress}
+              setRecipientAddress={setRecipientAddress}
             />
           </div>
 

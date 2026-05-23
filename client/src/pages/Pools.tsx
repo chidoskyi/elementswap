@@ -141,10 +141,10 @@ function PoolRow({ pool, chainId }: { pool: PoolInfo; chainId: number }) {
         {/* Overlapping avatars */}
         <div className="relative flex-shrink-0" style={{ width: 48, height: 28 }}>
           <div className="absolute left-0 z-10" style={{ borderRadius: "50%", border: "2px solid #1c1c1c" }}>
-            <ColorAvatar symbol={pool.symbol0} color={pool.color0} size={28} />
+            <ColorAvatar symbol={pool.symbol0} color={pool.color0} size={28} imageUrl={t0?.logoURI}/>
           </div>
           <div className="absolute z-0" style={{ left: 16, borderRadius: "50%", border: "2px solid #1c1c1c" }}>
-            <ColorAvatar symbol={pool.symbol1} color={pool.color1} size={28} />
+            <ColorAvatar symbol={pool.symbol1} color={pool.color1} size={28} imageUrl={t1?.logoURI} />
           </div>
         </div>
         <div>

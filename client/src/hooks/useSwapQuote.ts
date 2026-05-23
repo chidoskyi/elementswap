@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from "react";
 import { useChainId } from "wagmi";
 import { createPublicClient, http } from "viem";
 import { arcTestnet } from "../lib/wagmi";
-import { ROUTER_ABI, contractsByChainId, ZERO_ADDRESS } from "../lib/contracts";
+import { ROUTER_ABI, contractsByChainId } from "../lib/contracts";
 import { FACTORY_ABI }          from "../lib/contracts";
 import { applySlippage, formatDisplay, calcPriceImpact } from "../lib/decimal-utils";
 import type { Token } from "../data/tokens";

@@ -121,8 +121,8 @@ export function Header() {
              }}>
           <div className="w-2 h-2 rounded-full" style={{ background: "var(--green)" }} />
                   <img
-          src="/img/logos/elements.webp"
-          alt="Element Logo"
+          src="/img/logos/arc.webp"
+          alt="Arc Logo"
           className="w-8 h-8 rounded-full object-cover flex-shrink-0"
         />
           ARC Testnet

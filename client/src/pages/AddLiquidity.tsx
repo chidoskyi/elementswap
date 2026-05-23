@@ -10,11 +10,18 @@ import { TokenSelectModal } from "../components/TokenSelectModal";
 import { SwapSettings } from "../components/SwapSettings";
 
 import { getTokens, findTokenBySymbol, type Token } from "../data/tokens";
-import { getContracts, ROUTER_ABI, ERC20_ABI, explorerTx } from "../lib/contracts";
+import {
+  getContracts,
+  ROUTER_ABI,
+  ERC20_ABI,
+  explorerTx,
+  ZERO_ADDRESS,
+} from "../lib/contracts";
 import {
   parseUnits, formatUnits, formatDisplay,
   applySlippage, deadlineTimestamp,
 } from "../lib/decimal-utils";
+import { useHistoryStore } from "../store/useHistoryStore";
 
 type ModalSide = 0 | 1 | null;
 
@@ -30,7 +37,7 @@ export function AddLiquidityPage() {
   const { address, isConnected } = useAccount();
 
   const [token0, setToken0]   = useState<Token | null>(() => findTokenBySymbol("USDC",  chainId) ?? null);
-  const [token1, setToken1]   = useState<Token | null>(() => findTokenBySymbol("ACHS",  chainId) ?? null);
+  const [token1, setToken1]   = useState<Token | null>(() => findTokenBySymbol("ELMS",  chainId) ?? null);
   const [modal,  setModal]    = useState<ModalSide>(null);
 
   const [amt0, setAmt0]           = useState("");
@@ -42,6 +49,7 @@ export function AddLiquidityPage() {
   const [quoteRefreshSec,   setQuoteRefresh]       = useState(30);
   const [recipientAddress,  setRecipientAddress]   = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { add } = useHistoryStore();
 
   let contracts: ReturnType<typeof getContracts> | null = null;
   try { contracts = getContracts(chainId); } catch {}
@@ -104,11 +112,35 @@ export function AddLiquidityPage() {
         await writeContractAsync({ address: token1.address, abi: ERC20_ABI, functionName: "approve", args: [contracts.router, a1 * 2n] });
       }
 
-      toast.loading("Adding liquidity…", { id });
-      const hash = await writeContractAsync({
-        address: contracts.router, abi: ROUTER_ABI, functionName: "addLiquidity",
-        args: [token0.address, token1.address, a0, a1, min0, min1, address, dl],
+    toast.loading("Adding liquidity…", { id });
+
+    const tokenA = token0.address;
+    const tokenB = token1.address;
+
+    const hash = await writeContractAsync({
+      address: contracts.router,
+      abi: ROUTER_ABI,
+      functionName: "addLiquidity",
+      args: [tokenA, tokenB, a0, a1, min0, min1, address, dl],
+    });
+     // ── Record in history ──────────────────────────────────────
+    add({
+        id:          `add_liquidity-${Date.now()}`,
+        type:        "add_liquidity",
+        status:      "confirmed",
+        chainId,
+        network:     "ARC Testnet",
+        timestamp:   Date.now(),
+        txHash:      hash,
+        explorerUrl: explorerTx(chainId, hash),
+        amountIn:    amt0,
+        symbolIn:    token0.symbol,
+        amountOut:   amt1,
+        symbolOut:   token1.symbol,
+        feeDisplay:  `${FEE_TIERS[feeTier].label} fee`,
       });
+      // ──────────────────────────────────────────────────────────
+
 
     toast.success(
       <span>

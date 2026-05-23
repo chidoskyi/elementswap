@@ -41,7 +41,20 @@ export function PairAvatars({ t0, t1, size = 28 }: { t0: Token; t1: Token; size?
 }
 
 /* Generic avatar for pools using raw symbol + color */
-export function ColorAvatar({ symbol, color, size = 28 }: { symbol: string; color: string; size?: number }) {
+export function ColorAvatar({ symbol, color, size = 28, imageUrl }: { symbol: string; color: string; size?: number; imageUrl?: string }) {
+  const [imgError, setImgError] = useState(false);
+    // If an image URL exists and hasn't failed, show the image
+  if (imageUrl && !imgError) {
+    return (
+      <img
+        src={imageUrl}
+        alt={symbol}
+        style={{ width: size, height: size }}
+        className="rounded-full object-cover flex-shrink-0"
+        onError={() => setImgError(true)}
+      />
+    );
+  }
   return (
     <div
       style={{ width: size, height: size, background: `linear-gradient(135deg,${color})`, fontSize: size * 0.36 }}

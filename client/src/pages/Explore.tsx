@@ -3,7 +3,7 @@ import { TrendingUp, TrendingDown } from "lucide-react";
 import { ColorAvatar } from "../components/TokenAvatar";
 
 const STATS = [
-  { label: "AchSwap volume (24H)", val: "$1.24M", chg: "+12.4%", up: true  },
+  { label: "ElementSwap volume (24H)", val: "$1.24M", chg: "+12.4%", up: true  },
   { label: "Total Value Locked",   val: "$8.76M", chg: "+3.1%",  up: true  },
   { label: "24H transactions",     val: "4,291",  chg: "+8.7%",  up: true  },
   { label: "Active pairs",         val: "47",     chg: "-0.2%",  up: false },
@@ -13,18 +13,18 @@ const TOKENS = [
   { r:1, s:"USDC",  n:"USD Coin",        c:"#2775CA,#5bc4f5", p:"$1.00",     ch:"+0.01%", v:"$890K",  tvl:"$4.3M",  up:true  },
   { r:2, s:"ETH",   n:"Wrapped Ether",   c:"#627EEA,#a1b4f5", p:"$3,241.00", ch:"+1.23%", v:"$1.1M",  tvl:"$8.2M",  up:true  },
   { r:3, s:"WBTC",  n:"Wrapped Bitcoin", c:"#F7931A,#f5b965", p:"$62,400",   ch:"-0.80%", v:"$320K",  tvl:"$1.9M",  up:false },
-  { r:4, s:"ACHS",  n:"AchSwap Token",   c:"#fc72ff,#ff5c87", p:"$0.0432",   ch:"+5.34%", v:"$67K",   tvl:"$2.6M",  up:true  },
+  { r:4, s:"ELMS",  n:"ElementSwap Token",   c:"#fc72ff,#ff5c87", p:"$0.0432",   ch:"+5.34%", v:"$67K",   tvl:"$2.6M",  up:true  },
   { r:5, s:"wUSDC", n:"Wrapped USDC",    c:"#7b61ff,#4c82fb", p:"$0.9998",   ch:"-0.02%", v:"$210K",  tvl:"$3.1M",  up:false },
   { r:6, s:"USDT",  n:"Tether USD",      c:"#26A17B,#57d9a3", p:"$1.001",    ch:"+0.00%", v:"$440K",  tvl:"$1.2M",  up:true  },
   { r:7, s:"DAI",   n:"Dai Stablecoin",  c:"#F4B731,#f8d580", p:"$0.9996",   ch:"-0.04%", v:"$78K",   tvl:"$0.8M",  up:false },
 ];
 
 const POOLS = [
-  { r:1, t0:"USDC",c0:"#2775CA,#5bc4f5", t1:"ACHS", c1:"#fc72ff,#ff5c87", fee:"0.30%", tvl:"$2.41M", apr:"18.6%", v:"$890K"  },
+  { r:1, t0:"USDC",c0:"#2775CA,#5bc4f5", t1:"ELMS", c1:"#fc72ff,#ff5c87", fee:"0.30%", tvl:"$2.41M", apr:"18.6%", v:"$890K"  },
   { r:2, t0:"ETH", c0:"#627EEA,#a1b4f5", t1:"USDC", c1:"#2775CA,#5bc4f5", fee:"0.05%", tvl:"$3.12M", apr:"6.8%",  v:"$1.1M"  },
   { r:3, t0:"USDC",c0:"#2775CA,#5bc4f5", t1:"wUSDC",c1:"#7b61ff,#4c82fb", fee:"0.01%", tvl:"$1.87M", apr:"4.2%",  v:"$214K"  },
   { r:4, t0:"WBTC",c0:"#F7931A,#f5b965", t1:"USDC", c1:"#2775CA,#5bc4f5", fee:"0.05%", tvl:"$980K",  apr:"3.4%",  v:"$320K"  },
-  { r:5, t0:"ACHS",c0:"#fc72ff,#ff5c87", t1:"wUSDC",c1:"#7b61ff,#4c82fb", fee:"0.30%", tvl:"$743K",  apr:"12.1%", v:"$67K"   },
+  { r:5, t0:"ELMS",c0:"#fc72ff,#ff5c87", t1:"wUSDC",c1:"#7b61ff,#4c82fb", fee:"0.30%", tvl:"$743K",  apr:"12.1%", v:"$67K"   },
 ];
 
 type Tab = "tokens" | "pools";

@@ -13,15 +13,24 @@ export interface Token {
 /* ── ARC Testnet tokens (Chain ID: 5042002) ─────────────── */
 const arcTestnetTokens: Token[] = [
   {
-    address:   "0x0000000000000000000000000000000000000000",
-    symbol:    "USDC",
-    name:      "USD Coin",
-    decimals:  18,
-    chainId:   5042002,
-    logoURI:   "/img/logos/usdc.webp",
-    color:     "#2775CA, #5bc4f5",
-    isNative:  true,
+    address: "0xBAbaA147e5B9b81f8661025C48b7d396C617244b",
+    symbol: "USDC",
+    name: "USD Coin",
+    decimals: 6,
+    chainId: 5042002,
+    logoURI: "/img/logos/usdc.webp",
+    color: "#2775CA, #5bc4f5",
   },
+  // {
+  //   address:   "0x0000000000000000000000000000000000000000",
+  //   symbol:    "USDC",
+  //   name:      "USD Coin",
+  //   decimals:  18,
+  //   chainId:   5042002,
+  //   logoURI:   "/img/logos/usdc.webp",
+  //   color:     "#2775CA, #5bc4f5",
+  //   isNative:  true,
+  // },
   {
     address:   "0xDe5DB9049a8dd344dC1B7Bbb098f9da60930A6dA",
     symbol:    "wUSDC",
@@ -31,6 +40,15 @@ const arcTestnetTokens: Token[] = [
     logoURI:   "/img/logos/wusdc.jpeg",
     color:     "#7b61ff, #4c82fb",
     isWrapped: true,
+  },
+  {
+  address:   "0xCf1DBDe0200510faF9d80347730514202B65A0f4",
+  symbol:    "EURC",
+  name:      "Euro Coin",
+  decimals:  6,
+  chainId:   5042002,
+  logoURI:   "/img/logos/eurc.jpg",
+  color:     "#2B92D5, #5bc4f5",
   },
   {
     address:   "0x3742EC64Dc7678de91bdD00c5E1290f3e7D16c44",

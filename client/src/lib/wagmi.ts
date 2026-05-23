@@ -1,5 +1,6 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { defineChain } from "viem";
+import { sepolia } from "wagmi/chains";
 
 /* ── ARC Testnet — exact values from README ──────────────── */
 export const arcTestnet = defineChain({
@@ -17,9 +18,9 @@ export const arcTestnet = defineChain({
 });
 
 export const wagmiConfig = getDefaultConfig({
-  appName:   "AchSwap",
+  appName:   "ElementSwap",
   projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
-  chains:    [arcTestnet],
+  chains: [arcTestnet, sepolia],
   ssr:       false,
 });
 console.log("Project ID:", import.meta.env.VITE_WALLETCONNECT_PROJECT_ID);

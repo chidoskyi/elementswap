@@ -3,6 +3,7 @@ import { ArrowDown, ChevronDown } from "lucide-react";
 import { useAccount, useChainId, useWriteContract } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import toast from "react-hot-toast";
+import { useHistoryStore } from "../store/useHistoryStore";
 
 import { TokenAvatar }      from "../components/TokenAvatar";
 import { TokenSelectModal } from "../components/TokenSelectModal";
@@ -33,6 +34,7 @@ export function SwapPage() {
   const [quoteRefreshSec,   setQuoteRefresh]       = useState(30);
   const [recipientAddress,  setRecipientAddress]   = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { add } = useHistoryStore();
 
   let contracts: ReturnType<typeof getContracts> | null = null;
   try { contracts = getContracts(chainId); } catch {}
@@ -87,7 +89,25 @@ export function SwapPage() {
         <span>Swapped {sellAmt} {sell.symbol} → {quote.amountOut} {buy.symbol}<br/>
           <a href={explorerTx(chainId, hash)} target="_blank" rel="noreferrer" className="underline text-blue-400 text-xs">View on ARC Scan ↗</a>
         </span>, { id, duration: 8000 }
-      );
+      );  
+       // ── Record in history ──────────────────────────────────────
+      add({
+        id:          `swap-${Date.now()}`,
+        type:        "swap",
+        status:      "confirmed",
+        chainId,
+        network:     "ARC Testnet",
+        timestamp:   Date.now(),
+        txHash:      hash,
+        explorerUrl: explorerTx(chainId, hash),
+        amountIn:    sellAmt,
+        symbolIn:    sell.symbol,
+        amountOut:   quote.amountOut ?? "",
+        symbolOut:   buy.symbol,
+        feeDisplay:  "~$0.02",
+      });
+      // ──────────────────────────────────────────────────────────
+
       setSellAmt("");
     } catch (err: any) {
       toast.error(err?.shortMessage ?? err?.message ?? "Swap failed", { id });

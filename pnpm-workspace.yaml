@@ -1,5 +1,8 @@
 allowBuilds:
   bufferutil: true
+  cpu-features: true
+  deno-bin: true
   esbuild: true
   keccak: true
+  ssh2: true
   utf-8-validate: true
