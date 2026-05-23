@@ -1,4 +1,5 @@
-# AchSwap DEX
+# ElementSwap
+
 
 Uniswap-style decentralized exchange on **ARC Testnet** (Chain ID: 5042002).
 Frontend-only — all blockchain interactions via RPC, no backend server required.
@@ -16,7 +17,8 @@ Frontend-only — all blockchain interactions via RPC, no backend server require
 
 **1. Clone / extract the project**
 ```bash
-cd achswap-v2
+cd knoxswap
+
 ```
 
 **2. Install dependencies**
@@ -75,7 +77,8 @@ npm start
 ## Project structure
 
 ```
-achswap-v2/
+knoxswap/
+
 ├── client/
 │   ├── index.html
 │   ├── public/
@@ -146,10 +149,10 @@ Update these four files:
 
 ---
 
-## Rebranding
+## Branding notes
 
-1. Replace `ElementSwap` → your name in `Header.tsx`
-2. Update contract addresses in `contracts.ts`
-3. Swap token logos in `client/public/img/logos/`
-4. Change the pink accent `#fc72ff` in `tailwind.config.ts`
-5. Update `appName` in `wagmi.ts`
+This app UI is branded as **ElementSwap**.
+
+- The on-chain contracts remain **AchswapV2*** (contract names/addresses are technical identifiers and should not be renamed in the docs).
+- If you fork and redeploy, update the addresses/initialization values in `client/src/lib/contracts.ts` and any token list entries in `client/src/data/tokens.ts`.
+

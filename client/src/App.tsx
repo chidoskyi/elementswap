@@ -48,13 +48,14 @@ function AppInner() {
         accentColorForeground: "white",
         borderRadius: "large",
         overlayBlur: "large",
-        colors: {
-          modalBackground:        "#1c1c1c",
-          modalBorder:            "rgba(255,255,255,0.10)",
-          profileForeground:      "#2c2c2c",
-          connectButtonBackground:"#2c2c2c",
-        },
       });
+
+  if (resolved === "dark") {
+    rbkTheme.colors.modalBackground      = "#1c1c1c";
+    rbkTheme.colors.modalBorder          = "rgba(255,255,255,0.10)";
+    rbkTheme.colors.profileForeground    = "#2c2c2c";
+    rbkTheme.colors.connectButtonBackground = "#2c2c2c";
+  }
 
   return (
     <RainbowKitProvider theme={rbkTheme} modalSize="compact">
@@ -109,10 +110,6 @@ function AppInner() {
             borderRadius: "14px",
             padding:      "14px 18px",
             boxShadow:    "0 8px 32px rgba(0,0,0,0.25)",
-            maxWidth:     "380px",           // ← Add max width
-            wordBreak:    "break-word",      // ← Break long words
-            whiteSpace:   "normal",          // ← Allow wrapping
-            overflowWrap: "break-word",      // ← Ensure wrapping
           },
           success: { iconTheme: { primary: "#40b66b", secondary: "transparent" } },
           error:   { iconTheme: { primary: "#ff4f4f", secondary: "transparent" } },
@@ -132,6 +129,7 @@ export default function App() {
     </WagmiProvider>
   );
 }
+
 
 
 // import React, { useEffect } from "react";
@@ -186,12 +184,6 @@ export default function App() {
 //         overlayBlur: "large",
 //       });
 
-//   if (resolved === "dark") {
-//     rbkTheme.colors.modalBackground      = "#1c1c1c";
-//     rbkTheme.colors.modalBorder          = "rgba(255,255,255,0.10)";
-//     rbkTheme.colors.profileForeground    = "#2c2c2c";
-//     rbkTheme.colors.connectButtonBackground = "#2c2c2c";
-//   }
 
 //   return (
 //     <RainbowKitProvider theme={rbkTheme} modalSize="compact">
@@ -246,6 +238,10 @@ export default function App() {
 //             borderRadius: "14px",
 //             padding:      "14px 18px",
 //             boxShadow:    "0 8px 32px rgba(0,0,0,0.25)",
+//             maxWidth:     "380px",           // ← Add max width
+//             wordBreak:    "break-word",      // ← Break long words
+//             whiteSpace:   "normal",          // ← Allow wrapping
+//             overflowWrap: "break-word",      // ← Ensure wrapping
 //           },
 //           success: { iconTheme: { primary: "#40b66b", secondary: "transparent" } },
 //           error:   { iconTheme: { primary: "#ff4f4f", secondary: "transparent" } },
@@ -265,3 +261,5 @@ export default function App() {
 //     </WagmiProvider>
 //   );
 // }
+
+

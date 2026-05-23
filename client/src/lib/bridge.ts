@@ -7,8 +7,12 @@ import { createViemAdapterFromProvider } from "@circle-fin/adapter-viem-v2";
 import type { EIP1193Provider } from "viem";
 
 declare global {
-  interface Window { ethereum?: EIP1193Provider; }
+  interface Window {
+    // Keep as `any` to avoid type conflicts between bridge-kit + wallet-sdk typings.
+    ethereum?: any;
+  }
 }
+
 
 // Singleton kit instance
 const kit = new AppKit();
