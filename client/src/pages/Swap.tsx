@@ -24,7 +24,7 @@ export function SwapPage() {
   const { address, isConnected } = useAccount();
 
   const [sell, setSell] = useState<Token | null>(() => findTokenBySymbol("USDC",  5042002) ?? null);
-  const [buy,  setBuy]  = useState<Token | null>(() => findTokenBySymbol("ACHS", 5042002) ?? null);
+  const [buy, setBuy] = useState<Token | null>(() => findTokenBySymbol("ELMS", 5042002) ?? null);
   const [modal, setModal]       = useState<ModalSide>(null);
   const [sellAmt, setSellAmt]   = useState("");
   const [tab, setTab]           = useState<Tab>("swap");

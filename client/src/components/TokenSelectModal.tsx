@@ -38,6 +38,20 @@ export function TokenSelectModal({ open, onClose, onSelect, exclude }: Props) {
 
   const pick = (t: Token) => { onSelect(t); setQ(""); onClose(); };
 
+  // ← add here, before the open check:
+  if (open && allTokens.length === 0) return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(10px)" }}
+      onClick={() => onClose()}
+    >
+      <div className="token-modal p-8 text-center">
+        <p className="text-[15px] font-semibold" style={{ color: "var(--text1)" }}>Wrong network</p>
+        <p className="text-[13px] mt-1" style={{ color: "var(--text2)" }}>Switch to ARC Testnet to see tokens</p>
+      </div>
+    </div>
+  );
+
   if (!open) return null;
 
   return (
@@ -116,7 +130,10 @@ export function TokenSelectModal({ open, onClose, onSelect, exclude }: Props) {
 function TokenRow({ token, connected, onClick }: {
   token: Token; connected: boolean; onClick: () => void;
 }) {
-  const mockBal = connected ? (Math.random() * 500).toFixed(4) : null;
+    const mockBal = useMemo(
+    () => connected ? (Math.random() * 500).toFixed(4) : null,
+    [connected, token.address]
+  );
   return (
     <button onClick={onClick}
       className="w-full flex items-center gap-3 px-3 py-[10px] rounded-2xl text-left
